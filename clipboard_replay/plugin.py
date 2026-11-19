@@ -66,7 +66,7 @@ class ClipboardReplayPlugin(BasePlugin[ClipboardReplayConfig]):
             # name 是配置目录、日志、状态键与授权记录的稳定标识，不随语言变化
             name="剪贴板助手",
             display_name=_translate("ClipboardReplay", "剪贴板助手"),
-            version="1.0.1",
+            version="1.0.3",
             description=_translate("ClipboardReplay", "监听剪贴板内容，识别后交给对应处理器执行"),
             # 默认不自动开启界面；该开关只在启动时读取一次，
             # 不控制运行期间窗口实例的生命周期，也不被打开/关闭窗口反向写入。

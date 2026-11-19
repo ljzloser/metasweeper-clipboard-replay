@@ -8,7 +8,7 @@
 
 ```text
 https://openms.top/api/video/download/1
-https://new.saolei.wang/video/download/345964
+https://saolei.wang/video/download/345964
 95经典扫雷|79228415-263-107
 ```
 

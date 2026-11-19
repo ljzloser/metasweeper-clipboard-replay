@@ -46,7 +46,8 @@ def test_find_video_id(text, expected):
 
 
 @pytest.mark.parametrize(("text", "expected"), [
-    ("https://www.saolei.wang/video/download/345964", "345964"),
+    ("https://saolei.wang/video/download/345964", "345964"),
+    ("https://SAOLEI.WANG/video/000345964/?from=share", "345964"),
     ("分享：https://www.saolei.wang/video/download/345964。", "345964"),
     ("https://www.saolei.wang/video/347628", "347628"),
     ("https://www.saolei.wang/video/000347628/?from=share", "347628"),
@@ -289,7 +290,7 @@ def test_saolei_clipboard_download_uses_temporary_file(monitor):
     application.processEvents()
     assert not openms._network.requests
     assert saolei._network.requests[0].url().toString() == (
-        "https://www.saolei.wang/video/download/345964")
+        "https://saolei.wang/video/download/345964")
     reply = saolei._network.replies[0]
     reply.headers["Content-Disposition"] = b'attachment; filename="Exp%2071.66s%20replay.avf"'
     reply.finished.emit()

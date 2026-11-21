@@ -28,6 +28,8 @@ from clipboard_replay.replay import (
 
 @pytest.mark.parametrize(("text", "expected"), [
     ("https://openms.top/api/video/download/1", "1"),
+    ("https://openms.top/#/video/404309", "404309"),
+    ("分享：https://openms.top/#/video/404309?from=clipboard。", "404309"),
     ("分享：https://openms.top/api/video/download/12。", "12"),
     ("(https://openms.top/api/video/download/3)", "3"),
     ("http://openms.top/api/video/download/001/?token=anything#video", "1"),
@@ -39,6 +41,8 @@ from clipboard_replay.replay import (
     ("https://openms.top/api/video/download/1/extra", None),
     ("https://openms.top/api/video/download/0", None),
     ("https://openms.top/api/video/download/-1", None),
+    ("https://openms.top/#/video/0", None),
+    ("https://openms.top/#/video/abc", None),
     ("not a replay", None),
 ])
 def test_find_video_id(text, expected):

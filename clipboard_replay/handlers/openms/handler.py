@@ -17,8 +17,12 @@ def find_video_id(text: str) -> str | None:
             continue
         if parsed.netloc.lower() != "openms.top":
             continue
-        match = re.fullmatch(
-            r"/api/video/download/([0-9]{1,20})/?", parsed.path)
+        match = re.fullmatch(r"/api/video/download/([0-9]{1,20})/?", parsed.path)
+        if match is None and parsed.fragment:
+            # OpenMS video detail pages are served by a hash router, so the
+            # video ID lives in the URL fragment rather than the path.
+            route = urlsplit(parsed.fragment)
+            match = re.fullmatch(r"/video/([0-9]{1,20})/?", route.path)
         if match and int(match[1]) > 0:
             return str(int(match[1]))
     return None
